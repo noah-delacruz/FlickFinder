@@ -10,8 +10,6 @@
     }
 @endphp
 
-{{-- {{ dd($movie)}} --}}
-
 <div class="max-w-sm rounded-lg overflow-hidden bg-white transform transition-transform duration-300 hover:scale-105">
     <img 
         class="w-full h-64 object-cover" 

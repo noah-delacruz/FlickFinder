@@ -30,7 +30,7 @@ class MovieController extends Controller
 
         return view("results", [
             "movies" => $movies['results'],
-            // "total_results" => $movies['total_results'],
+            "total_results" => $movies['total_results'],
         ]);
     }
 }
