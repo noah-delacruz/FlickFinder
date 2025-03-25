@@ -14,6 +14,10 @@
                 <a href="/" class="hover:text-gray-400 transition-colors duration-300">
                     Home
                 </a>
+
+                <a href="/favorites" class="pl-6 hover:text-gray-400 transition-colors duration-300">
+                    Favorites
+                </a>
             </div>
         </nav>
 

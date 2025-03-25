@@ -48,4 +48,15 @@ class MovieController extends Controller
             "movies" => $movies['results'],
         ]);
     }
+
+    public function favorites()
+    {
+        return view("favorites");
+    }
+
+    public function loadFavorites(Request $request)
+    {
+        $favorites = $request->input('favorites', []);
+        return view('favorites', ['favorites' => $favorites]);
+    }
 }

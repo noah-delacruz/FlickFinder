@@ -11,28 +11,33 @@
 @endphp
 
 <script>
-    function toggleFavorite(movieId, movieTitle) {
-        // Get current favorites from localStorage
-        let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-        
-        // Check if movie is already in favorites
-        const existingIndex = favorites.findIndex(movie => movie.id === movieId);
-        
-        if (existingIndex === -1) {
-            // Add to favorites if not already there
-            favorites.push({ 
-                id: movieId, 
-                title: movieTitle 
-            });
-            
-            // Optional: Change button style or text to indicate favorited
-            event.target.textContent = 'Unfavorite';
-            event.target.classList.add('favorited');
+    function toggleFavorite(movie) {
+        if (!movie || !movie.id) {
+            console.error('Invalid movie object:', movie);
+            return;
         }
-        
-        // Save back to localStorage
+
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const index = favorites.findIndex(curr => curr.id === movie.id);
+
+        const button = document.querySelector(`.favorite-btn-{{ $movie['id']}}`);
+        console.log(button)
+
+        if (index === -1) {
+            // Add to favorites
+            favorites.push(movie);
+            console.log(`Added "${movie.title}" to favorites.`);
+            alert("Added to Favorites");
+        } else {
+            // Remove from favorites
+            favorites.splice(index, 1);
+            console.log(`Removed "${movie.title}" from favorites.`);
+            alert("Removed from Favorites");
+        }
+
         localStorage.setItem('favorites', JSON.stringify(favorites));
     }
+
 
 </script>
 
@@ -45,10 +50,10 @@
     
     <div class="px-6 py-4">
         <button 
-            onclick="toggleFavorite({{ $movie['id'] }}, '{{ $movie['title'] }}')" 
-            class="favorite-btn"
+            onClick="toggleFavorite({{json_encode($movie)}})"
+            class="favorite-btn text-base text-gray-700"
         >
-            ❤️ Favorite
+            ❤️ Add to favorites
         </button>
         <div class="font-bold text-xl mb-2 text-gray-800">
             {{$movie["title"]}}
