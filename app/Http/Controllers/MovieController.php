@@ -15,18 +15,10 @@ class MovieController extends Controller
 
         $apiKey = config('services.tmdb.api_key');
 
-        // dump(request()->all());
-        // dump($apiKey);
-        // dump($validatedSearch['query']);
-        
-        // $movies = Http::withToken($apiKey)->get('https://api.themoviedb.org/3/trending/movie/day?language=en-US')->json();
         $movies = Http::withToken($apiKey)->get('https://api.themoviedb.org/3/search/movie', [
             'query' => $validatedSearch['query'],
             'language' => 'en-US',
         ])->json();
-        // dump($movies['total_results']);
-
-
 
         return view("results", [
             "movies" => $movies['results'],
@@ -36,8 +28,6 @@ class MovieController extends Controller
 
     public function trending()
     {
-        // https://api.themoviedb.org/3/trending/movie/day?language=en-US
-
         $apiKey = config('services.tmdb.api_key');
 
         $movies = Http::withToken($apiKey)->get('https://api.themoviedb.org/3/trending/movie/day', [

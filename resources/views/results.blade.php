@@ -6,6 +6,7 @@
             <x-movie-card :movie="$movie"></x-movie-card>
         @endforeach
     </div>
+    
     <div class="flex justify-center pt-6">
         <p class="text-white-700">
             {{$total_results}} total results

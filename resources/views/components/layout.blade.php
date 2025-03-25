@@ -7,6 +7,7 @@
     <title>Flick Finder</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
+
 <body class="bg-[#060606] pb-20 text-white">
     <div class="px-10">
         <nav class="flex justify-between items-center py-4 border-b border-white/10">
