@@ -33,4 +33,19 @@ class MovieController extends Controller
             "total_results" => $movies['total_results'],
         ]);
     }
+
+    public function trending()
+    {
+        // https://api.themoviedb.org/3/trending/movie/day?language=en-US
+
+        $apiKey = config('services.tmdb.api_key');
+
+        $movies = Http::withToken($apiKey)->get('https://api.themoviedb.org/3/trending/movie/day', [
+            'language' => 'en-US',
+        ])->json();
+
+        return view("index", [
+            "movies" => $movies['results'],
+        ]);
+    }
 }
