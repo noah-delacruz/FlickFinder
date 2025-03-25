@@ -2,8 +2,8 @@
     <div class="flex items-center">
         <input 
             type="text" 
-            id="q" 
-            name="q" 
+            id="query" 
+            name="query" 
             placeholder="Spiderman..." 
             class="rounded-xl bg-white/10 border border-white/10 px-5 py-4 w-full"
         >
@@ -15,7 +15,7 @@
         </button>
     </div>
     
-    @error('q')
+    @error('query')
         <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
     @enderror
 </form>

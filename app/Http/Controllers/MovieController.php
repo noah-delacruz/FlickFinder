@@ -8,7 +8,14 @@ class MovieController extends Controller
 {
     public function search()
     {
-        dump(request()->all());
+        $apiKey = config('services.tmdb.api_key');
+        // dump(request()->all());
+        // dump($apiKey);
+
+        $validatedSearch = request()->validate([
+            'query' => ['required']
+        ]);
+
         return view("results", [
             "movies" => [],
         ]);
