@@ -29,13 +29,19 @@ class MovieController extends Controller
     public function trending()
     {
         $apiKey = config('services.tmdb.api_key');
-
-        $movies = Http::withToken($apiKey)->get('https://api.themoviedb.org/3/trending/movie/day', [
+    
+        $response = Http::withToken($apiKey)->get('https://api.themoviedb.org/3/trending/movie/day', [
             'language' => 'en-US',
-        ])->json();
-
+        ]);
+    
+        if ($response->successful() && isset($response->json()['results'])) {
+            $movies = $response->json()['results'];
+        } else {
+            $movies = [];
+        }
+    
         return view("index", [
-            "movies" => $movies['results'],
+            "movies" => $movies,
         ]);
     }
 
