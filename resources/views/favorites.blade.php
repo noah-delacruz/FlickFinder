@@ -16,7 +16,6 @@
     document.addEventListener('DOMContentLoaded', () => {
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-        // Send the favorites to Laravel
         fetch('/favorites/load', {
             method: 'POST',
             headers: {
@@ -27,8 +26,7 @@
         })
         .then(response => response.text())
         .then(html => {
-            // Reload the page with the favorites rendered from the server
-            document.body.innerHTML = html;
+            document.body.innerHTML = html; // Reload the page with the favorites rendered from the server
         })
         .catch(error => console.error('Error:', error));
     });
