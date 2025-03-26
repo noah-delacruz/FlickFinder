@@ -16,7 +16,7 @@ An MVP app of [SceneIt](https://github.com/noah-delacruz/SceneIt) built with Lar
 -   **Frontend**: Blade with Tailwind CSS
 -   **Backend**: Laravel (PHP Framework)
 -   **API**: The Movie Database (TMDB) API
--   **Deployment**: Deployer
+-   **Deployment**: Laravel Forge with DigitalOcean
 
 ## Getting Started
 
